@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jovian Careers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      #banner {
+        height: 360px;
+        width: 100%;
+        object-fit: cover;
+        margin: 5px 10px 16px 10px;
+      }
+
+      #people-image {
+        height: 360px;
+        border-radius: 10px;
+        object-fit: cover;
+        
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <img class="img-fluid" id="banner" src="{{ url_for('static', filename='banner.jpg') }}" >
+    <div class="container">
+      <h1 class="text-center mt-2 mb-4">Jovian Careers</h1>
+      <div class="row" style="margin-bottom: 16px;">
+        <div class="col-md-6">
+        <p class="lead">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur       accumsan ligula commodo rutrum auctor. Curabitur magna mauris, semper ac vehicula a, aliquam sit amet ipsum. Proin mattis tempus urna, quis rutrum erat commodo nec. Donec eu vulputate turpis. Vestibulum tortor ante, sagittis at egestas sit amet, ornare molestie diam. Duis ullamcorper pharetra eleifend. Sed vulputate magna arcu, scelerisque dapibus nunc tristique et. Vestibulum sed nibh vel odio feugiat eleifend et et elit. Curabitur ut vulputate nibh. Mauris ac placerat velit. Nunc vehicula ligula eget tortor tempus, ut aliquet ex suscipit.         
+        </p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+          <img id="people-image" src="/static/people.jpg">
+        </div>
+      </div>
+        <h2 id="list-of-jobs" class="text-center mt-2">Open Positions</h2>
+        <p>
+          {% for job in jobs %}
+           {% include 'jobitem.html' %}
+          {% endfor %}
+        </p>
+        <div class="text-center">
+        <a href="mailto:hello@joviancareer.xyz?subject=Questions%20about%20job%20openings&body=My%20name%20is%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20questions%20is%20%3Cyour%20question%20here%3E" class="btn btn-primary btn-lg">Contact Us</a>
+        </div>
+   
+    </div>
+    {% include 'footer.html' %}
+   
+    
+  </body>
+</html>
