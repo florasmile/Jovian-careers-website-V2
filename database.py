@@ -28,8 +28,24 @@ def load_jobs_from_db():
     jobs = []
     for row in result.all():
         jobs.append(row._asdict())
-
     return jobs
+      
+def load_job_from_db(id):
+    with engine.connect() as connection:
+        # Execute the query with parameter binding
+        result = connection.execute(
+            text("SELECT * FROM jobs WHERE id = :val"), {"val": id}
+        )
+        # Fetch the first row (if any)
+        row = result.fetchone()
+
+        # If no row is found, return None
+        if row is None:
+            return None
+        else:
+            # Convert the row to a dictionary and return it
+            return row._asdict()
+    
     # print("type(result):", type(result))
     # result_all = result.all()
     # print("type(result_all):", type(result_all))
